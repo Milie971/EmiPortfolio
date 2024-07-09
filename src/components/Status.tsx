@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Section } from "./Section";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { SideProject } from "./SideProject";
+//import { SideProject } from "./SideProject";
 import { ContactCard } from "./ContactCard";
-import { Work } from "./Work";
+//import { Work } from "./Work";
 
 import {
   Home,
@@ -68,6 +68,58 @@ export const Status = () => {
     </Section>
   );
 };
+
+const WORK: WorkingProps[] = [
+  {
+    image:
+      "https://media.licdn.com/dms/image/C4E0BAQGpPwSUgKTjTw/company-logo_100_100/0/1673953307000/mgen_logo?e=1727308800&v=beta&t=8-BcamMCKFtq-_d3TMwFkdmh1juxr1cYqviWq2w32-Y",
+    title: "MGEN",
+    role: "Chargé d'activité digitale",
+    date: "Septembre 2023 - ...",
+    url: "",
+    alternance: true,
+  },
+  {
+    image:
+      "https://media.licdn.com/dms/image/C4E0BAQFpNXR-FoVivA/company-logo_100_100/0/1679585528755/libellab_logo?e=1727308800&v=beta&t=WZdkq-_sR4pvAnafeaTX931mPmGQdXBz7Ko1bdhcB-E",
+    title: "LibelLab",
+    role: "Developpeuse Web",
+    date: "Octobre 2022",
+    url: "",
+    stage: true,
+  },
+];
+
+// type ContactProps = {
+//   image: string;
+//   mediumImage: string;
+//   name: string;
+//   description: string;
+// };
+type SideProjectProps = {
+  Logo: LucideIcon;
+  title: string;
+  description: string;
+  url: string;
+};
+
+export const SideProject = (props: SideProjectProps) => {
+  return (
+    <Link
+      href={props.url}
+      className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded "
+    >
+      <span className="bg-accent text-accent-foreground p-4 rounded-sm p-2">
+        <props.Logo size={16} />
+      </span>
+      <div>
+        <p className="text-lg font-semibold">{props.title}</p>
+
+        <p className="text-sm text-muted-foreground">{props.description}</p>
+      </div>
+    </Link>
+  );
+};
 const SIDE_PROJECT: SideProjectProps[] = [
   {
     Logo: MessageCircleHeart,
@@ -107,30 +159,38 @@ const SIDE_PROJECT: SideProjectProps[] = [
   },
 ];
 
-const WORK: WorkingProps[] = [
-  {
-    image:
-      "https://media.licdn.com/dms/image/C4E0BAQGpPwSUgKTjTw/company-logo_100_100/0/1673953307000/mgen_logo?e=1727308800&v=beta&t=8-BcamMCKFtq-_d3TMwFkdmh1juxr1cYqviWq2w32-Y",
-    title: "MGEN",
-    role: "Chargé d'activité digitale",
-    date: "Septembre 2023 - ...",
-    url: "",
-    alternance: true,
-  },
-  {
-    image:
-      "https://media.licdn.com/dms/image/C4E0BAQFpNXR-FoVivA/company-logo_100_100/0/1679585528755/libellab_logo?e=1727308800&v=beta&t=WZdkq-_sR4pvAnafeaTX931mPmGQdXBz7Ko1bdhcB-E",
-    title: "LibelLab",
-    role: "Developpeuse Web",
-    date: "Octobre 2022",
-    url: "",
-    stage: true,
-  },
-];
+type WorkingProps = {
+  image: string;
+  title: string;
+  role: string;
+  date: string;
+  url: string;
+  stage?: boolean;
+  alternance?: boolean;
+};
 
-// type ContactProps = {
-//   image: string;
-//   mediumImage: string;
-//   name: string;
-//   description: string;
-// };
+export const Work = (props: WorkingProps) => {
+  return (
+    <Link
+      href={props.url}
+      className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded "
+    >
+      <img
+        src={props.image}
+        alt={props.title}
+        className="w-10 h-10 object-contain rounded-md"
+      />
+
+      <div className="mr-auto">
+        <div className="flex items-center gap-2">
+          <p className="text-lg font-semibold">{props.title}</p>
+          {props.alternance && <Badge variant="outline">Alternance</Badge>}
+        </div>
+
+        <p className="text-xs text-muted-foreground">{props.role}</p>
+      </div>
+
+      <p className="text-xs text-end text-muted-foreground">{props.date}</p>
+    </Link>
+  );
+};

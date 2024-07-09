@@ -14,6 +14,8 @@ import {
   Truck,
 } from "lucide-react";
 
+import { Status } from "./Status";
+
 type SideProjectProps = {
   Logo: LucideIcon;
   title: string;
