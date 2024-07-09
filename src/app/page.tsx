@@ -12,14 +12,6 @@ import styles from "./styles.module.css";
 export default function Home() {
   return (
     <main>
-      <Image
-        src="/nextjs-github-pages/vercel.svg"
-        alt="Vercel Logo"
-        className={styles.vercelLogo}
-        width={100}
-        height={24}
-        priority
-      />
       <Header />
 
       <Spacing size="md" />
@@ -43,6 +35,14 @@ export default function Home() {
       <Footer />
 
       <Spacing size="md" />
+      <Image
+        src="/nextjs-github-pages/vercel.svg"
+        alt="Vercel Logo"
+        className={styles.vercelLogo}
+        width={100}
+        height={24}
+        priority
+      />
     </main>
   );
 }
