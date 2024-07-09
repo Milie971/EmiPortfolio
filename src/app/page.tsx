@@ -7,6 +7,7 @@ import { Section } from "@/components/Section";
 import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import styles from "./styles.module.css";
 
 export default function Home() {
   return (
